@@ -1,10 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import Ccomponent from './Ccomponent';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Ccomponent 
+        numbers={[2,5,3,8,2,5,6,5,6,77,34,123,321,8999]}
+        cucumbers={['Rick', 'Morty', 'Billy', 'Ilish']}
+        word='Im a cool word'
+        html='<ul>
+          <li>im1</li>
+          <li>im2</li>
+          <li>im3</li>
+          <li>im4</li>
+          <li>im5</li>
+        </ul>' />
+        
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -15,7 +28,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Я - пельмешка
         </a>
       </header>
     </div>
