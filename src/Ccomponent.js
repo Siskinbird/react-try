@@ -6,9 +6,34 @@ export default class Ccomponent extends Component {
       super(props)
     
       this.state = {
-        visibility: false
+        count: 0
       };
-      this.handleClick = this.handleClick.bind(this)
+      this.increment = this.increment.bind(this)
+      this.decrement = this.decrement.bind(this)
+      this.reset = this.reset.bind(this)
+      this.abs = this.abs.bind(this)
+    }
+
+    abs() {
+        this.setState(state => ({
+            count: state.count * state.count
+        }))
+    }
+
+    increment() {
+        this.setState(state => ({
+            count: state.count + 1
+        }))
+    }
+    decrement() {
+        this.setState(state => ({
+            count: state.count - 1
+        }))
+    }
+    reset() {
+        this.setState({
+            count: 0
+        })
     }
 
     handleClick() {
@@ -18,13 +43,13 @@ export default class Ccomponent extends Component {
     }
 
   render() {
-    if(this.state.visibility) {
-        
-    const name = this.state.name;
     return (
       <div>
-        <h1>Class - component {this.props.numbers.reverse().join(',')}</h1>
-        <h3>{name}</h3>
+        <h1>Count:  {this.state.count}</h1>
+        <button onClick={this.increment}>IN + </button>
+        <button onClick={this.decrement}>DE - </button>
+        <button onClick={this.abs}>ABS *</button>
+        <button onClick={this.reset}>RESET</button>
         <button onClick={this.handleClick}>Change</button>
         <h4>Some best code: {this.props.cucumbers}</h4>
         <h5>{this.props.word.toUpperCase()}</h5>
@@ -36,14 +61,9 @@ export default class Ccomponent extends Component {
         </ul>
       </div>
     )
-  } else {
-    return <div>
-        <button onClick={this.handleClick}>REturn</button>
-    </div>
   }
+}
 
-}
-}
 
 
 /* let arr = ['Rick', 'Morty', 'Billy', 'Ilish']
