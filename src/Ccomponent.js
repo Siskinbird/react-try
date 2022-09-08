@@ -8,7 +8,7 @@ export default class Ccomponent extends Component {
       this.state = {
         count: 0,
         input: '',
-        submit: ''
+        items: []
       };
       this.increment = this.increment.bind(this)
       this.decrement = this.decrement.bind(this)
@@ -28,7 +28,8 @@ export default class Ccomponent extends Component {
     inputSubmit(event) {
         event.preventDefault();
         this.setState({
-            submit: this.state.input
+            input: this.state.input,
+            items: [...this.state.items, this.state.input]
         })
     }
 
@@ -92,10 +93,9 @@ export default class Ccomponent extends Component {
         <h4>Some best code: {this.props.cucumbers}</h4>
         <h5>{this.props.word.toUpperCase()}</h5>
         <ul>
-            <li>444</li>
-            <li>ttt</li>
-            <li>333</li>
-            <li>www</li>
+           {this.state.items.map((item, index) => (
+            <li key={index}>{item}</li>
+           ))}
         </ul>
       </div>
     )
