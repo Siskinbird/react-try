@@ -24,9 +24,7 @@ export default class Ccomponent extends Component {
     }
 
     componentDidMount() {
-        fetch('www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail')
-        .then(res => res.json())
-        .then(
+        fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail").then(res => res.json()).then(
             (result) => {
                 this.setState({
                 isLoaded: true,
@@ -109,6 +107,7 @@ export default class Ccomponent extends Component {
           {apiitems.map(apiitem => (
             <li key={apiitem.name}>
                 {apiitem.strDrink}
+                <img width='50' src={apiitem.strDrinkThumb}></img>
             </li>
           ))}  
         </ul>
