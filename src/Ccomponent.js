@@ -8,6 +8,9 @@ export default class Ccomponent extends Component {
       this.state = {
         count: 0,
         input: '',
+        error: null,
+        isLoaded: false,
+        apiitems: [],
         items: []
       };
       this.increment = this.increment.bind(this)
@@ -19,6 +22,26 @@ export default class Ccomponent extends Component {
       this.inputChange = this.inputChange.bind(this)
       this.inputSubmit = this.inputSubmit.bind(this)
     }
+
+    componentDidMount() {
+        fetch('www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail')
+        .then(res => res.json())
+        .then(
+            (result) => {
+                this.setState({
+                isLoaded: true,
+                apiitems: result.drinks
+            });
+        },
+        (error) => {
+            this.setState({
+                isLoaded: true,
+                error
+            })
+        }
+        )
+    }
+
     inputChange(event) {
         this.setState({
             input: event.target.value
@@ -74,11 +97,25 @@ export default class Ccomponent extends Component {
     }
 
   render() {
+    const {error, isLoaded, apiitems} = this.state;
+    if(error) {
+        return <p>Error: {error.message}</p>
+    } else if (!isLoaded) {
+        return <p>Loading...</p>
+    } else {
     return (
       <div>
+        <ul>
+          {apiitems.map(apiitem => (
+            <li key={apiitem.name}>
+                {apiitem.strDrink}
+            </li>
+          ))}  
+        </ul>
         <form onSubmit={this.inputSubmit}>
             <input value={this.state.input} onChange={this.inputChange} />
             <button type='submit'>Submit input</button>
+            
         </form>
         <h3>{this.state.submit}</h3>
         <h3>Return: {this.state.input}</h3>
@@ -100,6 +137,7 @@ export default class Ccomponent extends Component {
       </div>
     )
   }
+}
 }
 
 
