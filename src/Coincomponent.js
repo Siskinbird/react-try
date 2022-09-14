@@ -37,12 +37,13 @@ export default class Coincomponent extends Component {
     } else {
     return (
       <div>
+        <h2>Coin Gecko API v3</h2>
         <ul>
           {coins.map(coins => (
             <li key={coins.name}>
                 {coins.id}
                 <img width='50' src={coins.image} alt={coins.name}/>
-                {coins.current_price}
+                {coins.current_price}<b>$</b>
             </li>
           ))}  
         </ul>
