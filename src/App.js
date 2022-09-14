@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import Ccomponent from './Ccomponent';
+import Coincomponent from './Coincomponent';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Coincomponent/>
         <Ccomponent 
         numbers={[2,5,3,8,2,5,6,5,6,77,34,123,321,8999]}
         cucumbers={['Rick', 'Morty', 'Billy', 'Ilish']}

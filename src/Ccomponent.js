@@ -107,7 +107,7 @@ export default class Ccomponent extends Component {
           {apiitems.map(apiitem => (
             <li key={apiitem.name}>
                 {apiitem.strDrink}
-                <img width='50' src={apiitem.strDrinkThumb}></img>
+                <img width='50' src={apiitem.strDrinkThumb} alt={apiitem.name}></img>
             </li>
           ))}  
         </ul>
@@ -139,7 +139,12 @@ export default class Ccomponent extends Component {
 }
 }
 
+//COINGECKO//
 
+/* https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false
+ */
+
+//COINGECKO//
 
 /* let arr = ['Rick', 'Morty', 'Billy', 'Ilish']
 function rev(arr) {
